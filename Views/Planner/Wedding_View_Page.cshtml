@@ -1,0 +1,27 @@
+﻿ @{
+    ViewData["Title"] = "Home Page";
+}
+@model Wedding
+
+<header>
+    <ul>
+        <a href="/Planner">Dashboard</a>
+        <a href="/Logout">Log Out</a>
+    </ul>
+    <p>@ViewBag.User.FirstName @ViewBag.User.LastName</p>
+</header>
+
+<h1>@Model.PlayerOne & @Model.PlayerTwo's Wedding</h1>
+<div class="division"></div>
+
+<h4>Wedding Date: @Model.Date_Display</h4>
+
+<h4>Guests:</h4>
+
+<ul>
+    @foreach(var i in @Model.RSVPs){
+        <li class="guestlist">@i.User.FirstName @i.User.LastName</li>
+    }
+</ul>
+
+

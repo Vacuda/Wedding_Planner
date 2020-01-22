@@ -1,0 +1,72 @@
+﻿ @{
+    ViewData["Title"] = "Home Page";
+}
+@model List<Wedding>
+
+<header>
+    <a href="/Logout">Log Out</a>
+    <p>@ViewBag.User.FirstName @ViewBag.User.LastName</p>
+</header>
+
+<h1>Wedding Planner</h1>
+<div class="division"></div>
+
+<div class="table-backplate">
+    <table class="table table-light table-striped" id="bordered">
+        <thead>
+            <tr>
+                <th scope="col" class="th-big bordered">Wedding</th>
+                <th scope="col" class="th-medium bordered">Date</th>
+                <th scope="col" class="th-small bordered">Guests</th>
+                <th scope="col" class="th-small bordered">Delete</th>
+                <th scope="col" class="th-small bordered">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var w in @Model){
+                <tr>
+                    <td>
+                        <a href="/Planner/Wedding/View/@w.WeddingId">@w.PlayerOne & @w.PlayerTwo</a>
+                    </td>
+                    <td>@w.Date_Display</td>
+                    <td class="centered">@w.Number_Guests</td>
+                    @{
+                        if (@ViewBag.User.UserId == @w.UserId){
+                        <td class="centered">
+                            <a href="/Planner/Delete_Wedding/@w.WeddingId" class="btn btn-danger btn-delete">Del</a>
+                        </td>
+                        }
+                        else{
+                            <td class="centered">---</td>
+                        }
+                    }
+
+                    @{
+                        bool isFlag = false;
+                    }
+
+                    @foreach(var r in w.RSVPs){
+                        if (@ViewBag.User.UserId == @r.UserId){
+                            <td class="centered">
+                                <a href="/Planner/Remove_RSVP/@w.WeddingId" class="btn btn-rsvp btn-danger">Un-RSVP</a>
+                            </td>
+                            isFlag = true;
+                        }
+                    }
+                    @{
+                        if (isFlag == false){
+                        <td class="centered">
+                            <a href="/Planner/Add_RSVP/@w.WeddingId" class="btn btn-rsvp btn-success">RSVP</a>
+                        </td>
+                        }
+                    }
+                </tr>
+            }
+        
+        </tbody>
+    </table>
+</div>
+
+
+<a href="/Planner/Wedding/Add" class="btn btn-add">Add New Wedding</a>

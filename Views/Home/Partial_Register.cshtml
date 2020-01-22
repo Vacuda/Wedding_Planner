@@ -1,0 +1,33 @@
+﻿@model Wedding_Planner.Models.User
+
+<h1>Register</h1>
+
+<form asp-action="Register" asp-controller="Home" method="POST">
+
+    <div class="form-group">
+        <label asp-for="FirstName">First Name: </label>
+        <input asp-for="FirstName" class="form-control" aria-describedby="First Name" placeholder="---">
+        <span asp-validation-for="FirstName"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LastName">Last Name: </label>
+        <input asp-for="LastName" class="form-control" aria-describedby="Last Name" placeholder="---">
+        <span asp-validation-for="LastName"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email">Email address: </label>
+        <input asp-for="Email" class="form-control" aria-describedby="emailHelp" placeholder="---">
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password">Password: </label>
+        <input asp-for="Password" class="form-control" aria-describedby="PasswordHelp" placeholder="---">
+        <span asp-validation-for="Password"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Confirm_Password">Confirm Password: </label>
+        <input asp-for="Confirm_Password" class="form-control" aria-describedby="Confirm Password" placeholder="---">
+        <span asp-validation-for="Confirm_Password"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

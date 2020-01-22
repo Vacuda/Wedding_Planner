@@ -1,0 +1,18 @@
+﻿@model Wedding_Planner.Models.Login
+
+<h1>Login</h1>
+
+<form asp-action="Login" asp-controller="Home" method="POST">
+
+    <div class="form-group">
+        <label asp-for="Login_Email">Email address: </label>
+        <input asp-for="Login_Email" class="form-control" aria-describedby="emailHelp" placeholder="---">
+        <span asp-validation-for="Login_Email"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Login_Password">Password: </label>
+        <input asp-for="Login_Password" class="form-control" aria-describedby="PasswordHelp" placeholder="---">
+        <span asp-validation-for="Login_Password"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
